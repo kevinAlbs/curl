@@ -40,8 +40,6 @@ if test "x$OPT_SCHANNEL" != xno; then
     AC_DEFINE(USE_WINDOWS_SSPI, 1, [to enable SSPI support])
     USE_WINDOWS_SSPI=1
     curl_sspi_msg="enabled"
-    # TODO: can/should this check Windows target version?
-    AC_DEFINE(HAVE_NCRYPT, 1, [to enable CNG API])
   else
     AC_MSG_RESULT(no)
   fi
