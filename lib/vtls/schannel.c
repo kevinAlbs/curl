@@ -1522,7 +1522,7 @@ static void delete_imported_key(PCCERT_CONTEXT imported_cert)
   /* Delete persisted key: */
   if(prov_info->dwProvType == 0) {
       /* Key stored in CNG (Cryptographic Next Generation). */
-
+#ifdef HAVE_NCRYPT
       /* Open provider handle. */
       {
         SECURITY_STATUS st = NCryptOpenStorageProvider(
@@ -1557,6 +1557,7 @@ static void delete_imported_key(PCCERT_CONTEXT imported_cert)
         /* NCryptDeleteKey freed key_handle. */
         key_handle = 0;
       }
+  #endif
   }
   else {
       /* Key stored in legacy CAPI (CryptoAPI). */
